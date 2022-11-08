@@ -1,21 +1,13 @@
 #include<stdio.h>
 #include<stdlib.h>
+int insert();
+int delete();
+int search();
+int display();
 
 int choice,i=0,arr[50],lim;
-void main()
-{
 
-printf("\n enter the limit of the array");
-scanf("%d",&lim);
-printf("\n Add elements to the given array- \n");
-for(i=0;i<lim;i++)
-     {
-        scanf("%d",&arr[i]);
-     }
-   menus();
- 
-}
-void menus(){
+int menus(){
 
   printf("\n");
         printf("\n\n Array Operations");
@@ -45,7 +37,9 @@ void menus(){
 
 }
 
-void insert()
+
+
+int insert()
     {
         int location,element;
         printf("\n\n\tArray Insertion\n");
@@ -81,7 +75,7 @@ void insert()
         };
     }
 
-void display(){
+int display(){
  printf("\n the current array is ");
  for(i=0;i<lim;i++){
  
@@ -91,7 +85,9 @@ void display(){
 
 
 }
-void delete(){
+
+
+int delete(){
 int i, location;
 printf("\n enter the location to delete");
 printf("\n");
@@ -120,7 +116,7 @@ for(i=0;i<lim;i++){
 
 
 }
-void search(){
+int search(){
 int element,i,flag=0;
 printf("\n enter the element to search");
 printf("\n");
@@ -149,5 +145,24 @@ menus();
 
 
 }
+
+
+
+
+void main()
+{
+
+printf("\n enter the limit of the array");
+scanf("%d",&lim);
+printf("\n Add elements to the given array- \n");
+for(i=0;i<lim;i++)
+     {
+        scanf("%d",&arr[i]);
+     }
+   menus();
+ 
+}
+
+
 
 
