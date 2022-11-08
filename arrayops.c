@@ -56,10 +56,10 @@ void insert()
             printf("%d  ",arr[i]);};
         printf("\n\n\tEnter location : ");
         scanf("%d",&location);
-       if(location+2>lim)
+       if(location>lim+1)
        {
        printf("overflow");
-       
+       menus();
        }
        else {
         
