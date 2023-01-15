@@ -1,104 +1,113 @@
 #include <stdio.h>
 #include <stdlib.h>
-void enqueue();
-void dequeue();
+
 void display();
-int rear=-1;
-int front=-1;
-int queue[100],n;
+void dequeue();
+void enqueue ();
+int que[100], n;
+int front = -1;
+int rear = -1;
 
-void main()
+int
+main ()
 {
-    int ch;
-    printf("Enter the Limit of Circular Queue: ");
-    scanf("%d",&n);
-    do
-    {
-        printf("\n\tQueue Operations-----\n");
-        printf("\n\t1-Enqueue\n\t2-Dequeue\n\t3-Display\n\t4-Exit\n\nEnter your choice: ");
-        scanf("%d",&ch);
-        switch(ch)
-        {
-            case 1:
-                enqueue();
-                break;
-            case 2:
-                dequeue();
-                break;
-            case 3:
-                display();
-                break;
-            case 4:
-                exit(1);
-            default:
-                printf("Invalid choice\n");
-                break;
-        }
-    }
-while(ch<4);
-}
+  int ch;
+  printf ("\n enter the limit of queue");
+  scanf ("%d", &n);
 
 
-void enqueue()
-{
-    int item;
-    if(rear==n-1)
+  do
     {
-        printf("\nFULL\n");
-    }
-    else
-    {
-        if (front == - 1)
-        {
-            front = 0;
-        }
-        printf("Insert the element in queue : ");
-        scanf("%d", &item);
-        rear = (rear + 1)%n;
-        queue[rear] = item;
-        printf("Element inserted in the circular queue successfully\n");
+      printf ("\n\tQueue Operations-----\n");
+      printf("\n\t1-Enqueue\n\t2-Dequeue\n\t3-Display\n\t4-Exit\n\nEnter your choice: ");
+       scanf("%d",&ch);
+      switch (ch)
+	{
+	case 1:
+	  enqueue ();
+	  break;
+    case 2:
+       dequeue();
+       break;
+    case 3:
+        display();
+        break;
+	}
+
 
     }
+  while (ch < 4);
+
 
 }
 
 
-void dequeue()
+void
+enqueue ()
 {
-if(front==-1||front>rear)
+  int data;
+  if (front == -1 && rear == -1)
     {
-        printf("\nempty\n");
+      front = 0;
+      rear = 0;
+      printf ("enter the element to insert");
+       scanf ("%d", &data);
+      que[rear] = data;
+      printf ("element inserted successfully");
     }
-    else
+  else if ((rear + 1) % n == front)
     {
+      printf ("queue is full");
 
-        printf("Element deleted is %d\t",queue[front]);
-        if(front==rear)
-           {
-               printf("only one element left and it deletd");
-               front=-1;
-               rear=-1;
-           }
-        else{
-            front=(front+1)%n;
-            printf("\nElement deleted");
-        }
 
     }
-}
-void display()
-{
-    int i;
-    if(front==-1||front>rear)
+  else
     {
-        printf("\nQUEUE IS EMPTY\n");
+      printf ("enter the element to insert");
+      scanf ("%d", &data);
+      rear = (rear + 1) % n;
+      que[rear] = data;
+      printf ("element inserted successfully");
+
     }
-    else
-    {
-        printf("The elements in the queue is :");
-        for(i=front;i<=rear;i++)
-            {
-                printf("%d",queue[i]);
-            }
-    }
+
+
 }
+  void dequeue(){
+      if(front ==-1 && rear==-1){
+          printf("queue is empty");
+          
+      }
+      else if(front==rear){
+          printf("%d which is the last element deleted from queue",que[front]);
+          front=-1;
+          rear=-1;
+          
+      }
+      else{
+          printf("%d  deleted from queue",que[front]);
+          front=(front+1)%n;
+          
+          
+      }
+      
+      
+  }
+  
+  void display(){
+      int i =front;
+      if(front==-1 &&rear==-1){
+          printf("que is empty");
+      }
+      else{printf("\n queue elements are---");
+          while(i!=rear){
+             printf("\n %d",que[i]);
+             i=(i+1)%n;
+             
+              
+          }
+          printf("\n %d",que[rear]);
+          
+      }
+      
+  }
